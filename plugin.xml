@@ -27,7 +27,7 @@
     <preference name="GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS" default="true" />
     <preference name="IOS_ON_DEVICE_CONVERSION_ANALYTICS" default="false" />
 
-    <js-module name="FirebasexAnalytics" src="www/firebasex-analytics.js">
+    <js-module name="FirebasexAnalyticsPlugin" src="www/firebasex-analytics.js">
         <clobbers target="FirebasexAnalytics" />
     </js-module>
 
