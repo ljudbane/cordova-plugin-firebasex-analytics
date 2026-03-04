@@ -43,6 +43,10 @@ The following plugin variables can be set at installation time using the `--vari
 
 | Variable | Default | Description |
 |---|---|---|
+| `ANDROID_FIREBASE_ANALYTICS_VERSION` | `23.0.0` | Android Firebase Analytics SDK version. |
+| `ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION` | `18.1.1` | Android Play Services Tag Manager version. |
+| `IOS_FIREBASE_SDK_VERSION` | `12.9.0` | iOS Firebase SDK version (for analytics pods). |
+| `IOS_GOOGLE_TAG_MANAGER_VERSION` | `9.0.0` | iOS Google Tag Manager pod version. |
 | `FIREBASE_ANALYTICS_COLLECTION_ENABLED` | `true` | Whether to enable analytics data collection on app startup. Set to `false` to disable until user consent is given - see [Disable data collection on startup](#disable-data-collection-on-startup). |
 | `FIREBASE_ANALYTICS_WITHOUT_ADS` | `false` | If `true`, removes IDFA/AdID tracking support for a smaller binary. |
 | `GOOGLE_ANALYTICS_ADID_COLLECTION_ENABLED` | `true` | Whether to enable collection of the Advertising ID. |

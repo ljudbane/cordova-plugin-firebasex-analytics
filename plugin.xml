@@ -54,8 +54,12 @@
             <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="$GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS" />
         </config-file>
 
+        <preference name="ANDROID_FIREBASE_ANALYTICS_VERSION" default="23.0.0" />
+        <preference name="ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION" default="18.1.1" />
+
         <source-file src="src/android/FirebasexAnalyticsPlugin.java" target-dir="src/org/apache/cordova/firebasex" />
-        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        <framework src="com.google.firebase:firebase-analytics:$ANDROID_FIREBASE_ANALYTICS_VERSION" />
+        <framework src="com.google.android.gms:play-services-tagmanager:$ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION" />
     </platform>
 
     <!-- iOS -->
@@ -70,15 +74,18 @@
         <header-file src="src/ios/FirebasexAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebasexAnalyticsPlugin.m" />
 
+        <preference name="IOS_FIREBASE_SDK_VERSION" default="12.9.0" />
+        <preference name="IOS_GOOGLE_TAG_MANAGER_VERSION" default="9.0.0" />
+
         <podspec>
             <config>
                 <source url="https://cdn.cocoapods.org/" />
             </config>
             <pods use-frameworks="true">
-                <pod name="FirebaseAnalytics/Core" spec="12.9.0" />
-                <pod name="FirebaseAnalytics/IdentitySupport" spec="12.9.0" />
+                <pod name="FirebaseAnalytics/Core" spec="$IOS_FIREBASE_SDK_VERSION" />
+                <pod name="FirebaseAnalytics/IdentitySupport" spec="$IOS_FIREBASE_SDK_VERSION" />
                 <!--<pod name="GoogleAdsOnDeviceConversion" spec="3.1.0"/>-->
-                <pod name="GoogleTagManager" spec="9.0.0" />
+                <pod name="GoogleTagManager" spec="$IOS_GOOGLE_TAG_MANAGER_VERSION" />
             </pods>
         </podspec>
 
