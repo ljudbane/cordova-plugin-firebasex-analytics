@@ -1,9 +1,8 @@
-# cordova-plugin-firebasex-analytics [![Latest Stable Version](https://img.shields.io/npm/v/cordova-plugin-firebasex-analytics.svg)](https://www.npmjs.com/package/cordova-plugin-firebasex-analytics) [![Total Downloads](https://img.shields.io/npm/dt/cordova-plugin-firebasex-analytics.svg)](https://npm-stat.com/charts.html?package=cordova-plugin-firebasex-analytics)
+# cordova-plugin-firebasex-analytics [![Latest Stable Version](https://img.shields.io/npm/v/cordova-plugin-firebasex-analytics.svg)](https://www.npmjs.com/package/cordova-plugin-firebasex-analytics)
 
-Firebase Analytics plugin for the modular FirebaseX Cordova plugin suite. Enables you to log events, set user properties, and track app usage and behaviour.
+Firebase Analytics plugin for the [modular FirebaseX Cordova plugin suite](https://github.com/dpa99c/cordova-plugin-firebasex#modular-plugins). 
 
-This is part of the [modular FirebaseX Cordova plugin suite](https://github.com/dpa99c/cordova-plugin-firebasex#modular-plugins).
-Install only the modules you need for smaller app size and better build performance.
+This plugin wraps the [Firebase Analytics SDK](https://firebase.google.com/docs/analytics) and provides methods to log events, set user properties, and control analytics data collection in your Cordova app.
 
 Supported platforms: Android and iOS
 
