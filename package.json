@@ -9,7 +9,7 @@
     "platforms": ["android", "ios"]
   },
   "dependencies": {
-    "cordova-plugin-firebasex-core": ">=1.0.0"
+    "xcode": "^3.0.1"
   },
   "devDependencies": {
     "xml-js": "^1.6.11"

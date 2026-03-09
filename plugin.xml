@@ -82,10 +82,10 @@
                 <source url="https://cdn.cocoapods.org/" />
             </config>
             <pods use-frameworks="true">
-                <pod name="FirebaseAnalytics/Core" spec="$IOS_FIREBASE_SDK_VERSION" />
-                <pod name="FirebaseAnalytics/IdentitySupport" spec="$IOS_FIREBASE_SDK_VERSION" />
+                <pod name="FirebaseAnalytics/Core" spec="12.9.0" />
+                <pod name="FirebaseAnalytics/IdentitySupport" spec="12.9.0" />
                 <!--<pod name="GoogleAdsOnDeviceConversion" spec="3.1.0"/>-->
-                <pod name="GoogleTagManager" spec="$IOS_GOOGLE_TAG_MANAGER_VERSION" />
+                <pod name="GoogleTagManager" spec="9.0.0" />
             </pods>
         </podspec>
 
