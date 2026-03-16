@@ -25,6 +25,14 @@ var PLUGIN_ID = "cordova-plugin-firebasex-analytics";
 /** @constant {string} The wrapper meta-plugin identifier used as a fallback source for plugin variables. */
 var WRAPPER_PLUGIN_ID = "cordova-plugin-firebasex";
 
+/** @constant {string} The expected app's Xcode name under `platforms/ios`. Since cordova-ios 8, this is `App`; in cordova <= 7 this was the project name. */
+var appNameCordova8Plus = "App";
+
+/***************************
+ * Internal helper functions
+ ****************************/
+
+
 /**
  * Resolves plugin variables using the 4-layer override strategy.
  *
@@ -60,6 +68,8 @@ function resolvePluginVariables(context) {
                     }
                 }
             });
+        } else {
+            console.warn("[FirebasexAnalytics] config.xml not found at " + configXmlPath + ". Cannot read plugin variables from config.xml.");
         }
     } catch (e) {
         console.warn("[FirebasexAnalytics] Could not read config.xml for plugin variables: " + e.message);
@@ -80,6 +90,8 @@ function resolvePluginVariables(context) {
                     }
                 });
             }
+        } else {
+            console.warn("[FirebasexAnalytics] package.json not found at " + packageJsonPath + ". Cannot read plugin variables from package.json.");
         }
     } catch (e) {
         console.warn("[FirebasexAnalytics] Could not read package.json for plugin variables: " + e.message);
@@ -168,20 +180,28 @@ module.exports = function(context) {
         } catch (e) {
             console.warn("[FirebasexAnalytics] Error updating pod versions: " + e.message);
         }
+    }else{
+        console.warn("[FirebasexAnalytics] Podfile not found at expected path: " + podfilePath);
     }
 
 
 
-    // Get app name from config.xml
+    // First try to resolve app name for cordova-ios 8+ by checking for the existence of the new layout with "App" subdirectory
     var appName;
-    try {
-        var configXmlPath = path.join(context.opts.projectRoot, "config.xml");
-        var configXml = fs.readFileSync(configXmlPath, "utf-8");
-        var nameMatch = configXml.match(/<name>([^<]+)<\/name>/);
-        appName = nameMatch ? nameMatch[1] : null;
-    } catch(e) {
-        console.warn("[FirebasexAnalytics] Could not read config.xml to get app name");
-        return;
+    var appSubDirPath = path.join(iosPlatformPath, appNameCordova8Plus);
+    if (fs.existsSync(appSubDirPath)) {
+        appName = appNameCordova8Plus;
+    } else {
+        // Try to resolve app name for cordova <= 7 from <name> in config.xml
+        try {
+            var configXmlPath = path.join(context.opts.projectRoot, "config.xml");
+            var configXml = fs.readFileSync(configXmlPath, "utf-8");
+            var nameMatch = configXml.match(/<name>([^<]+)<\/name>/);
+            appName = nameMatch ? nameMatch[1] : null;
+        } catch(e) {
+            console.warn("[FirebasexAnalytics] Could not read config.xml to get app name");
+            return;
+        }
     }
 
     if (!appName) {
