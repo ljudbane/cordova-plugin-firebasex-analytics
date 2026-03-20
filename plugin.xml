@@ -55,7 +55,7 @@
         </config-file>
 
         <preference name="ANDROID_FIREBASE_ANALYTICS_VERSION" default="23.0.0" />
-        <preference name="ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION" default="18.1.1" />
+        <preference name="ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION" default="18.3.0" />
 
         <source-file src="src/android/FirebasexAnalyticsPlugin.java" target-dir="src/org/apache/cordova/firebasex" />
         <framework src="com.google.firebase:firebase-analytics:$ANDROID_FIREBASE_ANALYTICS_VERSION" />
