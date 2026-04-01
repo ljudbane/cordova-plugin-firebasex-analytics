@@ -57,7 +57,8 @@ static NSString* const FIREBASE_ANALYTICS_COLLECTION_ENABLED = @"FIREBASE_ANALYT
 - (void)setUserId:(CDVInvokedUrlCommand*)command {
     [self.commandDelegate runInBackground:^{
         @try {
-            NSString* uid = [command.arguments objectAtIndex:0];
+            id rawUid = [command.arguments objectAtIndex:0];
+            NSString* uid = ([rawUid isEqual:[NSNull null]]) ? nil : rawUid;
             [FIRAnalytics setUserID:uid];
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -76,7 +77,8 @@ static NSString* const FIREBASE_ANALYTICS_COLLECTION_ENABLED = @"FIREBASE_ANALYT
     [self.commandDelegate runInBackground:^{
         @try {
             NSString* name = [command.arguments objectAtIndex:0];
-            NSString* value = [command.arguments objectAtIndex:1];
+            id rawValue = [command.arguments objectAtIndex:1];
+            NSString* value = ([rawValue isEqual:[NSNull null]]) ? nil : rawValue;
             [FIRAnalytics setUserPropertyString:value forName:name];
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
